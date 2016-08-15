@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BFDD12E1-B4CA-4558-AF6F-BF4D5D28BF66}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="RecvScreen\RecvScreen.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SendScreen\SendScreen.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="RecvScreen">
+        <MSBuild Projects="RecvScreen\RecvScreen.dproj"/>
+    </Target>
+    <Target Name="RecvScreen:Clean">
+        <MSBuild Projects="RecvScreen\RecvScreen.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RecvScreen:Make">
+        <MSBuild Projects="RecvScreen\RecvScreen.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SendScreen">
+        <MSBuild Projects="SendScreen\SendScreen.dproj"/>
+    </Target>
+    <Target Name="SendScreen:Clean">
+        <MSBuild Projects="SendScreen\SendScreen.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SendScreen:Make">
+        <MSBuild Projects="SendScreen\SendScreen.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="RecvScreen;SendScreen"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="RecvScreen:Clean;SendScreen:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="RecvScreen:Make;SendScreen:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

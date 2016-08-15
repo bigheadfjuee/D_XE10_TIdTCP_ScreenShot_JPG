@@ -1,0 +1,7 @@
+2016/08/15
+
+參考  ScreenThief - stealing screen shots over the Network
+http://delphi.about.com/library/weekly/aa012004a.htm
+
+改寫成 Delphi XE10 + Indy10 可用的版本
+
